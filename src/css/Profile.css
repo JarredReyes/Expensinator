@@ -1,0 +1,8 @@
+.profile-content {
+    transition: margin-left 0.3s;
+    margin-left: 280px;
+  }
+  
+  .collapsed .profile-content {
+    margin-left: 100px;
+  }

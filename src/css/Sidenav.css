@@ -1,0 +1,171 @@
+a {
+    text-decoration: none;
+}
+
+.sidenav {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #212A3E;
+    color: #F1F6F9;
+    transition: width 0.3s ease, padding 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.sidebar-header {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 20px;
+}
+
+.header-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.header-title {
+    font-weight: bold;
+}
+
+.sidenav.collapsed {
+    width: 50px;
+    padding: 0px 10px;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    color: #F1F6F9;
+    font-size: 16px;
+    font-weight: 300;
+    align-self: flex-start;
+    transition: align-self 0.3s ease, padding 0.3s ease, transform 0.3s ease, left 0.3s ease;
+    position: absolute;
+    left: 100%;
+    transform: translateX(-100%);
+}
+
+.sidenav:not(.expanded) .toggle-button {
+    left: 80%;
+    transform: translateX(-100%);
+}
+
+.sidenav.expanded .toggle-button {
+    left: calc(100% - 15px);
+    transform: translateX(-100%);
+}
+
+.toggle-button:hover {
+    background-color: #2E3A55;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    transition: margin 0.3s ease, padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidenav.expanded li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    transition: padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    color: #F1F6F9;
+}
+
+.sidenav.collapsed li {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 50%;
+    transition: padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidenav.expanded li:hover {
+    background-color: #2E3A55;
+    cursor: pointer;
+    padding-left: 5px;
+}
+
+.sidenav.collapsed li:hover {
+    background-color: #2E3A55;
+    cursor: pointer;
+}
+
+.icon {
+    color: #006AFF;
+    margin-right: 20px; 
+    transition: margin-right 0.3s ease;
+}
+
+.title {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+hr {
+    margin: 10px 0;
+    border: 0;
+    border-top: 1px solid #ccc;
+    transition: margin 0.3s ease;
+}
+
+.sidenav.collapsed .icon {
+    margin-right: 0;
+}
+
+.sidenav.collapsed li {
+    position: relative;
+}
+
+.toggle-button:hover::before, .sidenav.collapsed li:hover::before {
+    content: attr(data-title);
+    position: absolute;
+    top: 15px;
+    left: 100%;
+    transform: translateY(0);
+    white-space: nowrap;
+    background-color: #1A1F2E;
+    color: #FFFFFF;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toggle-button:hover::after, .sidenav.collapsed li:hover::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: calc(100% - 5px);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #1A1F2E;
+    z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.toggle-button:hover::before, .sidenav.collapsed li:hover::before,
+.toggle-button:hover::after, .sidenav.collapsed li:hover::after {
+    opacity: 1;
+    visibility: visible;
+}

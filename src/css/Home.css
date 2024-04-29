@@ -1,0 +1,9 @@
+.home-content {
+    transition: margin-left 0.3s;
+    margin-left: 280px; 
+  }
+  
+.collapsed .home-content {
+    margin-left: 100px; 
+}
+  

@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'PPTelegraf-Regular';
+    src: url('../fonts/PPTelegraf-Regular.otf') format('opentype'); /* OpenType Format */
+    font-weight: normal;
+    font-style: normal;
+}
+
 a {
     text-decoration: none;
 }
@@ -9,7 +16,7 @@ a {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #212A3E;
+    background-color: #121212;
     color: #F1F6F9;
     transition: width 0.3s ease, padding 0.3s ease;
     display: flex;
@@ -105,7 +112,7 @@ ul {
 }
 
 .icon {
-    color: #006AFF;
+    color: #FFFFFF;
     margin-right: 20px; 
     transition: margin-right 0.3s ease;
 }
@@ -132,6 +139,7 @@ hr {
 }
 
 .toggle-button:hover::before, .sidenav.collapsed li:hover::before {
+    font-family: 'PPTelegraf-Regular', sans-serif;
     content: attr(data-title);
     position: absolute;
     top: 15px;
@@ -169,3 +177,14 @@ hr {
     opacity: 1;
     visibility: visible;
 }
+
+.active-link li {
+    background-color: #2E3A55; 
+}
+
+.active-link .icon,
+.active-link .title {
+    color: #006AFF; 
+}
+
+

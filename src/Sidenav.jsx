@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaUserAlt, FaChartBar, FaList, FaDollarSign, FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { FaHome, FaChartBar, FaDollarSign, FaAngleLeft, FaAngleRight, FaFilter} from 'react-icons/fa';
 import './css/Sidenav.css';
 
 const Sidenav = ({ expanded, toggleSidenav }) => {
@@ -18,24 +18,25 @@ const Sidenav = ({ expanded, toggleSidenav }) => {
             {expanded && <span className="title">Home</span>}
           </li>
         </NavLink>
-        <NavLink to="/profile" className={({ isActive }) => isActive ? 'active-link' : ''}>
-          <li data-title="Profile">
-            <FaUserAlt className="icon" />
-            {expanded && <span className="title">Profile</span>}
+        <NavLink to="/expenses" className={({ isActive }) => isActive ? 'active-link' : ''}>
+          <li data-title="Expenses">
+            <FaDollarSign className="icon" />
+            {expanded && <span className="title">Expenses</span>}
           </li>
         </NavLink>
         <NavLink to="/category" className={({ isActive }) => isActive ? 'active-link' : ''}>
-          <li data-title="Category">
-            <FaList className="icon" />
-            {expanded && <span className="title">Category</span>}
+          <li data-title="Categories">
+              <FaFilter className="icon" /> 
+              {expanded && <span className="title">Categories</span>}
           </li>
         </NavLink>
         <NavLink to="/chart" className={({ isActive }) => isActive ? 'active-link' : ''}>
           <li data-title="Chart">
             <FaChartBar className="icon" />
-            {expanded && <span className="title">Analysis</span>}
+            {expanded && <span className="title">Chart</span>}
           </li>
         </NavLink>
+        
       </ul>
       <hr />
       <div className="toggle-button-wrapper">

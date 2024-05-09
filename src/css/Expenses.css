@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'PPTelegraf-Regular';
+  src: url('../fonts/PPTelegraf-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'PPTelegraf-Regular', sans-serif;
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+}
+
+.expenses-content {
+  transition: margin-left 0.3s;
+  margin-left: 280px;
+}
+
+.collapsed .expenses-content {
+  margin-left: 100px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+form input, form select {
+  flex: 1;
+  min-width: 120px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #2E2E2E;
+  color: #FFF;
+}
+
+form button {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+h2, h3 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.expenses-list {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.expenses-list td {
+  padding: 15px;
+  border-bottom: 1px solid #444;
+}
+
+.expenses-list tr:last-child td {
+  border-bottom: none;
+}
+
+.expenses-list td {
+  background-color: #333;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  color: #FFF;
+}

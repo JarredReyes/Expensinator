@@ -1,35 +1,34 @@
-// src/App.js
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { CategoryProvider } from './contexts/CategoryContext';
 import Sidenav from './Sidenav';
 import Home from './Home';
-import Profile from './Profile';
-import Category from './Category';
+import Expenses from './Expenses';
 import Chart from './Chart';
-import CategoryDetails from './CategoryDetails';
+import CategoryExpenses from './CategoryExpenses';
+import Category from './Category';
+import './css/App.css';
+
 
 const App = () => {
     const [expanded, setExpanded] = useState(false);
+    const [expenses, setExpenses] = useState(JSON.parse(localStorage.getItem('expenses')) || []);
 
     const toggleSidenav = () => setExpanded(!expanded);
 
     return (
         <BrowserRouter>
-            <CategoryProvider> 
-                <div className={`app-container ${expanded ? 'expanded' : 'collapsed'}`}>
-                    <Sidenav expanded={expanded} toggleSidenav={toggleSidenav} />
-                    <div className="content">
-                        <Routes>
-                            <Route path="/" element={<Home expanded={expanded} />} />
-                            <Route path="/profile" element={<Profile expanded={expanded} />} />
-                            <Route path="/category" element={<Category expanded={expanded} />} />
-                            <Route path="/category/:categoryName" element={<CategoryDetails />} />
-                            <Route path="/chart" element={<Chart expanded={expanded} />} />
-                        </Routes>
-                    </div>
+            <div className={`app-container ${expanded ? 'expanded' : 'collapsed'}`}>
+                <Sidenav expanded={expanded} toggleSidenav={toggleSidenav} />
+                <div className="content">
+                    <Routes>
+                        <Route path="/" element={<Home expanded={expanded} />} />
+                        <Route path="/expenses" element={<Expenses expenses={expenses} setExpenses={setExpenses} expanded={expanded} />} />
+                        <Route path="/category" element={<Category expenses={expenses} expanded={expanded} />} />
+                        <Route path="/chart" element={<Chart expanded={expanded} />} />
+                        <Route path="/category-expenses/:category" element={<CategoryExpenses expenses={expenses} expanded={expanded} />} />
+                    </Routes>
                 </div>
-            </CategoryProvider>
+            </div>
         </BrowserRouter>
     );
 };

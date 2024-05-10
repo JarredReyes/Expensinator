@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaChartBar, FaDollarSign, FaAngleLeft, FaAngleRight, FaFilter} from 'react-icons/fa';
+import { FaHome, FaChartBar, FaDollarSign, FaAngleLeft, FaAngleRight, FaFilter, FaWallet, FaMoneyBillWave } from 'react-icons/fa';
 import './css/Sidenav.css';
 
 const Sidenav = ({ expanded, toggleSidenav }) => {
@@ -20,8 +20,14 @@ const Sidenav = ({ expanded, toggleSidenav }) => {
         </NavLink>
         <NavLink to="/expenses" className={({ isActive }) => isActive ? 'active-link' : ''}>
           <li data-title="Expenses">
-            <FaDollarSign className="icon" />
+            <FaMoneyBillWave className="icon" />
             {expanded && <span className="title">Expenses</span>}
+          </li>
+        </NavLink>
+        <NavLink to="/savings" className={({ isActive }) => isActive ? 'active-link' : ''}>
+          <li data-title="Savings">
+            <FaWallet className="icon" /> {/* Assuming using the dollar sign or choose another appropriate icon */}
+            {expanded && <span className="title">Savings</span>}
           </li>
         </NavLink>
         <NavLink to="/category" className={({ isActive }) => isActive ? 'active-link' : ''}>
@@ -36,7 +42,6 @@ const Sidenav = ({ expanded, toggleSidenav }) => {
             {expanded && <span className="title">Chart</span>}
           </li>
         </NavLink>
-        
       </ul>
       <hr />
       <div className="toggle-button-wrapper">

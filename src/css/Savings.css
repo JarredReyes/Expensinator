@@ -1,0 +1,10 @@
+.savings-content {
+    transition: margin-left 0.3s;
+    margin-left: 280px;
+    margin-right: 20px;
+}
+
+.collapsed .savings-content {
+    margin-left: 100px;
+    margin-right: 30px;
+}

@@ -16,7 +16,7 @@ const Category = ({ expenses, expanded }) => {
 
     return (
         <div className={`category-page ${expanded ? 'expanded' : 'collapsed'}`}>
-            <h2>Categories</h2>
+            <h1>Categories</h1>
             <p>Listed below is our Expense Tracker App's categories</p>
             <hr />
             <div className="category-grid">

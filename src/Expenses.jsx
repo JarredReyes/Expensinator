@@ -15,23 +15,19 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         description: '',
         amount: ''
     });
-
     const [totalSavings, setTotalSavings] = useState(() => {
         const savedTotalSavings = localStorage.getItem('totalSavings');
         return savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0;
     });
-
     const categories = ['Food', 'Transport', 'Utilities', 'Entertainment', 'Other'];
 
     useEffect(() => {
         localStorage.setItem('expenses', JSON.stringify(expenses));
     }, [expenses]);
-
     useEffect(() => {
         const savedTotalSavings = localStorage.getItem('totalSavings');
         setTotalSavings(savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0);
     }, []);
-
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         if (editingIndex !== -1) {
@@ -92,6 +88,10 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         return expenses.reduce((acc, expense) => acc + parseFloat(expense.amount), 0).toFixed(2);
     };
 
+    const calculateSavings = () => {
+        return 1000.00; // Dummy value
+    };
+
     return (
         <div className={`expenses-content ${expanded ? 'expanded' : 'collapsed'}`}>
             <h1>Expenses</h1>
@@ -100,7 +100,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card">
                     <span className="material-icons card-icon">payments</span>
                     <h3>Total Expenses</h3>
-                    <p>₱ {calculateTotal()}</p>
+                    <p>${calculateTotal()}</p>
                 </div>
                 <div className="card">
                     <span className="material-icons card-icon">budget</span>
@@ -155,74 +155,43 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                     </div>
                 ) : (
                     <ul className='expenses-list'>
-                        {expenses
-                            .slice()
-                            .reverse()
-                            .slice(0, showAll ? expenses.length : 5)
-                            .map((expense, index) => (
-                                <li key={index} className="expense-item">
-                                    <span className="expense-date">{format(parseISO(expense.date), 'MMM d, yyyy')}</span>
-                                    <span className="expense-category">{expense.category}</span>
-                                    <span className="expense-description">{expense.description}</span>
-                                    <span className="expense-amount">₱ {parseFloat(expense.amount).toFixed(2)}</span>
-                                    <span className="edit-icon" onClick={() => editExpense(expenses.length - 1 - index)}>
-                                        <span className="material-icons">edit</span>
-                                    </span>
-                                    <span className="delete-icon" onClick={() => handleDeleteExpense(expenses.length - 1 - index)}>
-                                        <span className="material-icons">delete</span>
-                                    </span>
-                                </li>
-                            ))}
+                        {expenses.slice(0, showAll ? expenses.length : 15).map((expense, index) => (
+                            <li key={index} className={`expense-item ${editingIndex === index ? 'editing' : ''}`}>
+                                {editingIndex === index ? (
+                                    <>
+                                        <input type="text" name="description" value={editedExpense.description} onChange={handleInputChange} />
+                                        <select name="category" value={editedExpense.category} onChange={handleInputChange}>
+                                            {categories.map((category, index) => (
+                                                <option key={index} value={category}>{category}</option>
+                                            ))}
+                                        </select>
+                                        <input type="number" name="amount" value={editedExpense.amount} onChange={handleInputChange} />
+                                        <button onClick={saveEditedExpense}><span className="material-icons">save</span>Save Changes</button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className="expense-desc">{expense.description}</span>
+                                        <span className="expense-cat">{expense.category}</span>
+                                        <span className="expense-amt">${expense.amount}</span>
+                                        <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
+                                        <div className="expense-icons">
+                                            <span className="material-icons" onClick={() => editExpense(index)}>edit</span>
+                                            <span className="material-icons" onClick={() => handleDeleteExpense(index)}>delete</span>
+                                        </div>
+                                    </>
+                                )}
+                            </li>
+                        ))}
                     </ul>
                 )}
-                {expenses.length > 5 && (
-                    <button className="show-more-button" onClick={() => setShowAll(!showAll)}>
-                        {showAll ? 'Show Less' : 'Show More'}
-                    </button>
-                )}
-                {editingIndex !== -1 && (
-                    <div className="edit-popup">
-                        <h2>Edit Expense</h2>
-                        <form onSubmit={saveEditedExpense} className="expense-form">
-                            <input
-                                type="date"
-                                name="date"
-                                value={editedExpense.date}
-                                onChange={handleInputChange}
-                            />
-                            <select
-                                name="category"
-                                value={editedExpense.category}
-                                onChange={handleInputChange}
-                            >
-                                {categories.map((category, index) => (
-                                    <option key={index} value={category}>{category}</option>
-                                ))}
-                            </select>
-                            <input
-                                type="text"
-                                name="description"
-                                placeholder="Description"
-                                value={editedExpense.description}
-                                onChange={handleInputChange}
-                            />
-                            <input
-                                type="number"
-                                name="amount"
-                                placeholder="Amount"
-                                value={editedExpense.amount}
-                                onChange={handleInputChange}
-                            />
-                            <button type="submit">
-                                <span className="material-icons">save</span> Save
-                            </button>
-                            <button onClick={() => setEditingIndex(-1)}>
-                                <span className="material-icons">cancel</span> Cancel
-                            </button>
-                        </form>
-                    </div>
-                )}
             </div>
+            {!showAll && expenses.length > 15 && (
+                <center>
+                    <button onClick={() => setShowAll(true)} className="show-all-button">
+                        <span className="material-icons">expand_more</span> Show All
+                    </button>
+                </center>
+            )}
         </div>
     );
 };

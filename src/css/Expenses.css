@@ -27,7 +27,7 @@ form {
   justify-content: space-between;
 }
 
-form input, form select {
+form input, form select, .expense-item.editing input,.expense-item.editing select {
   flex: 1;
   min-width: 120px;
   margin: 10px;
@@ -39,7 +39,7 @@ form input, form select {
   font-family: 'PPTelegraf-Regular', sans-serif;
 }
 
-form input, form select {
+form input, form select, .expense-item.editing input, .expense-item.editing select {
   padding: 12px;
   border: 2px solid #333;
   background-color: #2E2E2E;
@@ -230,3 +230,4 @@ h1 {
   width: 100%;
   margin-bottom: 20px;
 }
+

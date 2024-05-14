@@ -9,12 +9,18 @@ import CategoryExpenses from './CategoryExpenses';
 import Category from './Category';
 import './css/App.css';
 
-
 const App = () => {
     const [expanded, setExpanded] = useState(false);
     const [expenses, setExpenses] = useState(JSON.parse(localStorage.getItem('expenses')) || []);
 
     const toggleSidenav = () => setExpanded(!expanded);
+
+    const deleteAndSyncExpense = (index) => {
+        const updatedExpenses = [...expenses];
+        updatedExpenses.splice(index, 1);
+        setExpenses(updatedExpenses);
+        localStorage.setItem('expenses', JSON.stringify(updatedExpenses));
+    };
 
     return (
         <BrowserRouter>
@@ -23,11 +29,11 @@ const App = () => {
                 <div className="content">
                     <Routes>
                         <Route path="/" element={<Home expanded={expanded} />} />
-                        <Route path="/expenses" element={<Expenses expenses={expenses} setExpenses={setExpenses} expanded={expanded} />} />
+                        <Route path="/expenses" element={<Expenses expenses={expenses} setExpenses={setExpenses} expanded={expanded} deleteAndSyncExpense={deleteAndSyncExpense} />} />
+                        <Route path="/category-expenses/:category" element={<CategoryExpenses expenses={expenses} expanded={expanded} deleteAndSyncExpense={deleteAndSyncExpense} />} />
                         <Route path="/savings" element={<Savings expanded={expanded} />} />
                         <Route path="/category" element={<Category expenses={expenses} expanded={expanded} />} />
                         <Route path="/chart" element={<Chart expanded={expanded} />} />
-                        <Route path="/category-expenses/:category" element={<CategoryExpenses expenses={expenses} expanded={expanded} />} />
                     </Routes>
                 </div>
             </div>

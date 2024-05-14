@@ -3,12 +3,17 @@ import { useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import './css/Expenses.css';
 
-const CategoryExpenses = ({ expenses, expanded }) => {
+const CategoryExpenses = ({ expenses, expanded, deleteAndSyncExpense }) => {
     const { category } = useParams();
     const filteredExpenses = expenses.filter(expense => expense.category === category);
 
     const calculateTotal = () => {
         return filteredExpenses.reduce((acc, expense) => acc + parseFloat(expense.amount), 0).toFixed(2);
+    };
+
+    const handleDeleteExpense = (expenseIndex) => {
+        const index = expenses.findIndex(expense => expense === filteredExpenses[expenseIndex]);
+        deleteAndSyncExpense(index);
     };
 
     return (
@@ -34,7 +39,7 @@ const CategoryExpenses = ({ expenses, expanded }) => {
                                 <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                 <div className="expense-icons">
                                     <span className="material-icons" onClick={() => editExpense(index)}>edit</span>
-                                    <span className="material-icons" onClick={() => deleteExpense(index)}>delete</span>
+                                    <span className="material-icons" onClick={() => handleDeleteExpense(index)}>delete</span>
                                 </div>
                             </li>
                         ))}

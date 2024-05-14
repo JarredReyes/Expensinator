@@ -62,22 +62,22 @@ const Savings = ({ expanded }) => {
 
   return (
     <div className={`savings-content ${expanded ? 'expanded' : 'collapsed'}`}>
-      <h1>Welcome to the Savings Page</h1>
+      <h1>Welcome to the Budget Page</h1>
       <div className="card-display">
         <div className="card">
-      <h2>Total Savings: ${totalSavings.toLocaleString()}</h2>
-      </div>
+          <h2>Total Budget: ${totalSavings.toLocaleString()}</h2>
+        </div>
       </div>
       <p>This page is dedicated to tracking and managing your savings.</p>
-      <label htmlFor="savings-input">Enter your savings amount:</label>
+      <label htmlFor="savings-input">Enter your budget amount:</label>
       <input
         type="number"
         id="savings-input"
         value={savingsAmount}
         onChange={handleSavingsChange}
       />
-      <button onClick={handleSaveSavings}>Add Savings</button>
-      <button onClick={handleDeleteSavings}>Delete Total Savings</button>
+      <button onClick={handleSaveSavings}>Add Budget</button>
+      <button onClick={handleDeleteSavings}>Delete Total Budget</button>
       <h3>Savings History:</h3>
       <ul>
         {savingsHistory.map((savings, index) => (

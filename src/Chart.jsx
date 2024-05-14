@@ -22,9 +22,25 @@ const Chart = ({ expanded }) => {
     ],
   });
 
+  const [lineChartData, setLineChartData] = useState({
+    labels: [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ],
+    datasets: [
+      {
+        label: 'Total Expenses per Month',
+        backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
+        data: new Array(12).fill(0),
+      },
+    ],
+  });
+
   useEffect(() => {
     const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
+    // Calculate category totals for pie chart
     const categoryTotals = expenses.reduce((totals, expense) => {
       if (totals[expense.category]) {
         totals[expense.category] += parseFloat(expense.amount);
@@ -49,19 +65,24 @@ const Chart = ({ expanded }) => {
         },
       ],
     }));
-  }, []);
 
-  const lineChartData = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-      {
-        label: 'My First dataset',
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        data: [65, 59, 80, 81, 56, 55, 40],
-      },
-    ],
-  };
+    // Calculate monthly totals for line chart
+    const monthlyTotals = expenses.reduce((totals, expense) => {
+      const month = new Date(expense.date).getMonth();
+      totals[month] += parseFloat(expense.amount);
+      return totals;
+    }, new Array(12).fill(0));
+
+    setLineChartData(prevData => ({
+      ...prevData,
+      datasets: [
+        {
+          ...prevData.datasets[0],
+          data: monthlyTotals,
+        },
+      ],
+    }));
+  }, []);
 
   const lineChartOptions = {
     responsive: true,
@@ -82,7 +103,7 @@ const Chart = ({ expanded }) => {
     <div className={`chart-content ${expanded ? 'expanded' : 'collapsed'}`}>
       <div className="chart-container">
         <div className="chart-item">
-          <h2>Total Expenses Chart</h2>
+          <h2>Total Expenses per Month</h2>
           <div style={{ height: '400px', width: '600px' }}>
             <Line data={lineChartData} options={lineChartOptions} />
           </div>

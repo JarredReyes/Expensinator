@@ -25,15 +25,15 @@ const Sidenav = ({ expanded, toggleSidenav }) => {
           </li>
         </NavLink>
         <NavLink to="/savings" className={({ isActive }) => isActive ? 'active-link' : ''}>
-          <li data-title="Savings">
+          <li data-title="Budget">
             <FaWallet className="icon" /> {/* Assuming using the dollar sign or choose another appropriate icon */}
-            {expanded && <span className="title">Savings</span>}
+            {expanded && <span className="title">Budget</span>}
           </li>
         </NavLink>
         <NavLink to="/category" className={({ isActive }) => isActive ? 'active-link' : ''}>
           <li data-title="Categories">
-              <FaFilter className="icon" /> 
-              {expanded && <span className="title">Categories</span>}
+            <FaFilter className="icon" />
+            {expanded && <span className="title">Categories</span>}
           </li>
         </NavLink>
         <NavLink to="/chart" className={({ isActive }) => isActive ? 'active-link' : ''}>

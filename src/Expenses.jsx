@@ -87,37 +87,37 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 </div>
             </div>
             <form onSubmit={addExpense} className="expense-form">
-                <input 
-                    type="date" 
-                    name="date" 
-                    value={form.date} 
-                    onChange={handleInputChange} 
-                    disabled={editingIndex !== -1} 
+                <input
+                    type="date"
+                    name="date"
+                    value={form.date}
+                    onChange={handleInputChange}
+                    disabled={editingIndex !== -1}
                 />
-                <select 
-                    name="category" 
-                    value={form.category} 
-                    onChange={handleInputChange} 
+                <select
+                    name="category"
+                    value={form.category}
+                    onChange={handleInputChange}
                     disabled={editingIndex !== -1}
                 >
                     {categories.map((category, index) => (
                         <option key={index} value={category}>{category}</option>
                     ))}
                 </select>
-                <input 
-                    type="text" 
-                    name="description" 
-                    placeholder="Description" 
-                    value={form.description} 
-                    onChange={handleInputChange} 
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Description"
+                    value={form.description}
+                    onChange={handleInputChange}
                     disabled={editingIndex !== -1}
                 />
-                <input 
-                    type="number" 
-                    name="amount" 
-                    placeholder="Amount" 
-                    value={form.amount} 
-                    onChange={handleInputChange} 
+                <input
+                    type="number"
+                    name="amount"
+                    placeholder="Amount"
+                    value={form.amount}
+                    onChange={handleInputChange}
                     disabled={editingIndex !== -1}
                 />
                 <button type="submit" disabled={editingIndex !== -1}>
@@ -150,7 +150,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                                     <>
                                         <span className="expense-desc">{expense.description}</span>
                                         <span className="expense-cat">{expense.category}</span>
-                                        <span className="expense-amt">${expense.amount}</span>
+                                        <span className="expense-amt">₱ {expense.amount}</span>
                                         <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                         <div className="expense-icons">
                                             <span className="material-icons" onClick={() => editExpense(index)}>edit</span>

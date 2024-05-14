@@ -38,7 +38,6 @@ const CategoryExpenses = ({ expenses, expanded, deleteAndSyncExpense }) => {
                                 <span className="expense-amt">${expense.amount}</span>
                                 <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                 <div className="expense-icons">
-                                    <span className="material-icons" onClick={() => editExpense(index)}>edit</span>
                                     <span className="material-icons" onClick={() => handleDeleteExpense(index)}>delete</span>
                                 </div>
                             </li>

@@ -133,7 +133,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                     </div>
                 ) : (
                     <ul className='expenses-list'>
-                        {expenses.slice(0, showAll ? expenses.length : 10).map((expense, index) => (
+                        {expenses.slice(0, showAll ? expenses.length : 15).map((expense, index) => (
                             <li key={index} className={`expense-item ${editingIndex === index ? 'editing' : ''}`}>
                                 {editingIndex === index ? (
                                     <>
@@ -144,7 +144,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                                             ))}
                                         </select>
                                         <input type="number" name="amount" value={editedExpense.amount} onChange={handleInputChange} />
-                                        <button onClick={saveEditedExpense}>Save</button>
+                                        <button onClick={saveEditedExpense}><span className="material-icons">save</span>Save Changes</button>
                                     </>
                                 ) : (
                                     <>
@@ -163,10 +163,12 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                     </ul>
                 )}
             </div>
-            {!showAll && expenses.length > 10 && (
-                <button onClick={() => setShowAll(true)} className="show-all-button">
-                    Show All
-                </button>
+            {!showAll && expenses.length > 15 && (
+                <center>
+                    <button onClick={() => setShowAll(true)} className="show-all-button">
+                        <span className="material-icons">expand_more</span> Show All
+                    </button>
+                </center>
             )}
         </div>
     );

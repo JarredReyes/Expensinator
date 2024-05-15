@@ -90,10 +90,6 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         return expenses.reduce((acc, expense) => acc + parseFloat(expense.amount), 0).toFixed(2);
     };
 
-    const calculateSavings = () => {
-        return 1000.00; // Dummy value
-    };
-
     return (
         <div className={`expenses-content ${expanded ? 'expanded' : 'collapsed'}`}>
             <h1>Expenses</h1>
@@ -107,7 +103,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card">
                     <span className="material-icons card-icon">budget</span>
                     <h3>Total Budget</h3>
-                    <p>₱ {totalSavings.toLocaleString()}</p>
+                    <p className={totalSavings < 0 ? 'red-text' : ''}>₱ {totalSavings.toLocaleString()}</p>
                 </div>
             </div>
             <form onSubmit={addExpense} className="expense-form">

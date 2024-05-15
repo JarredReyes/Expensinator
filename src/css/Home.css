@@ -1,9 +1,79 @@
 .home-content {
-    transition: margin-left 0.3s;
-    margin-left: 280px; 
-  }
-  
-.collapsed .home-content {
-    margin-left: 100px; 
+  text-align: center;
+  padding: 20px;
+  font-family: "Roboto", sans-serif; /* Set font family */
+  background-color: #292929;
 }
-  
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.welcome-image {
+  width: 100%;
+  max-width: 5000px;
+  height: auto; /* Maintain aspect ratio */
+  max-height: 500px;
+  object-fit: cover; /* Ensure the image covers the container */
+  margin-bottom: 20px;
+  margin-left: 60px;
+}
+
+h2 {
+  font-size: 4em;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Arial", sans-serif; /* Set font family */
+  color: #7db876;
+}
+
+p {
+  font-size: 1.5em;
+  margin: 20px 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Set font family */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row; /* Arrange buttons horizontally */
+  gap: 40px;
+
+  margin-top: 20px;
+  margin-left: 70px;
+}
+
+.home-button {
+  display: flex;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Set font family */
+  justify-content: center; /* Center button content horizontally and vertically */
+  background-color: #7db876;
+  color: rgb(0, 0, 0);
+  padding: 20px 40px; /* Adjust padding to make buttons larger */
+  font-size: 20px; /* Increase font size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-button .icon {
+  font-size: 2.5em; /* Increase icon size */
+  margin-right: 40px; /* Add space between icon and text */
+}
+
+.home-button:hover .icon {
+  color: #7db876;
+  transform: scale(1.05);
+}
+
+.home-button:hover {
+  background-color: #ffffff;
+  color: #7db876;
+  transform: scale(1.05);
+}

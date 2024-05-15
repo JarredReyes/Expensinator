@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './css/Savings.css';
 
 const Savings = ({ expanded }) => {
-  const [savingsAmount, setSavingsAmount] = useState(0);
+  const [savingsAmount, setSavingsAmount] = useState('');
   const [totalSavings, setTotalSavings] = useState(() => {
     const savedTotalSavings = localStorage.getItem('totalSavings');
     return savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0;
@@ -22,15 +22,20 @@ const Savings = ({ expanded }) => {
   }, [savingsHistory]);
 
   const handleSavingsChange = (event) => {
-    const newSavingsAmount = parseInt(event.target.value, 10) || 0;
+    const newSavingsAmount = event.target.value;
     setSavingsAmount(newSavingsAmount);
   };
 
   const handleSaveSavings = () => {
-    const newTotalSavings = totalSavings + savingsAmount;
-    setTotalSavings(newTotalSavings);
-    setSavingsAmount(0);
-    setSavingsHistory([...savingsHistory, { amount: savingsAmount, timestamp: new Date() }]);
+    const amountToAdd = parseInt(savingsAmount, 10);
+    if (!isNaN(amountToAdd) && amountToAdd > 0) {
+      const newTotalSavings = totalSavings + amountToAdd;
+      setTotalSavings(newTotalSavings);
+      setSavingsAmount('');
+      setSavingsHistory([...savingsHistory, { amount: amountToAdd, timestamp: new Date() }]);
+    } else {
+      alert("Please enter a valid amount.");
+    }
   };
 
   const handleDeleteSavings = () => {
@@ -53,10 +58,14 @@ const Savings = ({ expanded }) => {
     const editedSavings = prompt("Enter the new savings amount:");
     if (editedSavings !== null && editedSavings !== "") {
       const newAmount = parseInt(editedSavings, 10);
-      const oldAmount = newSavingsHistory[index].amount;
-      newSavingsHistory[index].amount = newAmount;
-      setSavingsHistory(newSavingsHistory);
-      setTotalSavings(totalSavings + newAmount - oldAmount);
+      if (!isNaN(newAmount)) {
+        const oldAmount = newSavingsHistory[index].amount;
+        newSavingsHistory[index].amount = newAmount;
+        setSavingsHistory(newSavingsHistory);
+        setTotalSavings(totalSavings + newAmount - oldAmount);
+      } else {
+        alert("Please enter a valid amount.");
+      }
     }
   };
 
@@ -65,7 +74,8 @@ const Savings = ({ expanded }) => {
       <h1>Welcome to the Budget Page</h1>
       <div className="card-display">
         <div className="card">
-          <h2>Total Budget: ${totalSavings.toLocaleString()}</h2>
+          
+          <h2>Total Budget:<p className={totalSavings < 0 ? 'red-text' : ''}>₱{totalSavings.toLocaleString()}</p></h2>
         </div>
       </div>
       <p>This page is dedicated to tracking and managing your savings.</p>
@@ -75,6 +85,7 @@ const Savings = ({ expanded }) => {
         id="savings-input"
         value={savingsAmount}
         onChange={handleSavingsChange}
+        placeholder="Enter amount"
       />
       <button onClick={handleSaveSavings}>Add Budget</button>
       <button onClick={handleDeleteSavings}>Delete Total Budget</button>

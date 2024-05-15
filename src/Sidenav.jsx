@@ -6,10 +6,10 @@ import './css/Sidenav.css';
 const Sidenav = ({ expanded, toggleSidenav }) => {
   return (
     <div className={`sidenav ${expanded ? 'expanded' : 'collapsed'}`}>
-      <div className="sidebar-header">
-        <FaDollarSign className="header-icon" />
-        {expanded && <span className="header-title">Expensinator</span>}
-      </div>
+  <div className="sidebar-header">
+    <img src="/public/explogo.png" alt="Expensinator Logo" className="header-logo" />
+    {expanded && <span className="header-title">Expensinator</span>}
+  </div>
       <hr />
       <ul>
         <NavLink to="/" className={({ isActive }) => isActive ? 'active-link' : ''}>
@@ -49,7 +49,7 @@ const Sidenav = ({ expanded, toggleSidenav }) => {
           {expanded ? <FaAngleLeft /> : <FaAngleRight />}
         </button>
       </div>
-    </div>
+   </div>
   );
 };
 

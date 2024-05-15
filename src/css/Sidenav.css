@@ -26,25 +26,31 @@ a {
 }
 
 .sidebar-header {
-    padding: 10px 20px;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: flex-start; /* Align items to the left */
     font-size: 20px;
+    margin-right: auto; /* Pushes the logo to the left */
 }
 
-.header-icon {
-    font-size: 24px;
-    margin-right: 10px;
-}
+
+
 
 .header-title {
     font-weight: bold;
 }
+.header-logo {
+    width: 50px; /* Adjust the width of the logo */
+    height: auto; /* Allow the height to adjust proportionally */
+    margin-right: 10px; /* Add margin to separate the logo from text */
+    margin-left: -30px; /* Adjust the margin to move the logo further to the left */
+}
+
 
 .sidenav.collapsed {
     width: 50px;
-    padding: 0px 10px;
+    padding: 20px 10px;
 }
 
 .toggle-button {
@@ -83,6 +89,7 @@ ul {
     margin: 0;
     transition: margin 0.3s ease, padding 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
 }
+
 
 .sidenav.expanded li {
     display: flex;
@@ -179,12 +186,13 @@ hr {
 }
 
 .active-link li {
-    background-color: #2E3A55; 
+    background-color: #ffffff; 
 }
 
 .active-link .icon,
 .active-link .title {
-    color: #006AFF; 
+    color: #7db876; 
 }
+
 
 

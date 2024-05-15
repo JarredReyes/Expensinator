@@ -51,6 +51,8 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         const updatedTotalSavings = totalSavings - parseFloat(newExpense.amount);
         setTotalSavings(updatedTotalSavings);
         localStorage.setItem('totalSavings', updatedTotalSavings);
+
+        window.location.reload();
     };
 
     const handleDeleteExpense = (index) => {

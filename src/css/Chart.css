@@ -1,6 +1,10 @@
 .chart-content {
     transition: margin-left 0.3s;
     margin-left: 280px;
+    text-align: center;
+    display: flex; /* Set display to flex */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
 }
   
 .collapsed .chart-content {

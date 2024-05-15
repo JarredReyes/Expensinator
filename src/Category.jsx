@@ -7,11 +7,11 @@ const Category = ({ expenses, expanded }) => {
     const [selectedCategory, setSelectedCategory] = useState('Food'); 
 
     const categories = [
-        { name: 'Food', icon: FaUtensils },
-        { name: 'Transport', icon: FaCar },
-        { name: 'Utilities', icon: FaBolt },
-        { name: 'Entertainment', icon: FaFilm },
-        { name: 'Other', icon: FaEllipsisH }
+        { name: 'Food', icon: FaUtensils, image:'public/category1.png'  },
+        { name: 'Transport', icon: FaCar, image:'public/category2.png' },
+        { name: 'Utilities', icon: FaBolt, image:'public/category3.png' },
+        { name: 'Entertainment', icon: FaFilm, image:'public/category4.png' },
+        { name: 'Other', icon: FaEllipsisH, image:'public/category5.png' }
     ];
 
     return (
@@ -22,7 +22,7 @@ const Category = ({ expenses, expanded }) => {
             <div className="category-grid">
                 {categories.map((category, index) => (
                     <Link key={category.name} to={`/category-expenses/${category.name}`} className="category-card">
-                        <div className="category-color-box">
+                        <div className="category-color-box" style={{ backgroundImage: `url(${category.image})` }}>
                             <category.icon size={50} />
                         </div>
                         <div className="category-details">
@@ -37,3 +37,5 @@ const Category = ({ expenses, expanded }) => {
 };
 
 export default Category;
+    
+

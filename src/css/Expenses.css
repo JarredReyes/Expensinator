@@ -1,14 +1,21 @@
 @font-face {
-  font-family: 'PPTelegraf-Regular';
-  src: url('../fonts/PPTelegraf-Regular.otf') format('opentype');
+  font-family: "PPTelegraf-Regular";
+  src: url("../fonts/PPTelegraf-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 body {
-  font-family: 'PPTelegraf-Regular', sans-serif;
-  background-color: #1E1E1E;
-  color: #FFFFFF;
+  font-family: "PPTelegraf-Regular", sans-serif;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+h2 {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 0;
+  font-family: "Arial", sans-serif; /* Set font family */
+  color: #7db876;
 }
 
 .expenses-content {
@@ -36,12 +43,12 @@ form {
 }
 
 .show-all-button {
-  font-family: 'PPTelegraf-Regular', sans-serif;
+  font-family: "PPTelegraf-Regular", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 20px;
-  background-color: #006AFF;
+  background-color: #006aff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -59,68 +66,83 @@ form {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-form input, form select, .expense-item.editing input,.expense-item.editing select {
+form input,
+form select,
+.expense-item.editing input,
+.expense-item.editing select {
   flex: 1;
   min-width: 120px;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background: #2E2E2E;
-  color: #FFFFFF;
-  font-family: 'PPTelegraf-Regular', sans-serif;
+  background: #2e2e2e;
+  color: #ffffff;
+  font-family: "PPTelegraf-Regular", sans-serif;
 }
 
-form input, form select, .expense-item.editing input, .expense-item.editing select {
-  padding: 12px;
-  border: 2px solid #333;
-  background-color: #2E2E2E;
+form input,
+form select,
+.expense-item.editing input,
+.expense-item.editing select {
+  padding: 30px;
+  border: 2px solid #c2ffbd;
+  background-color: #2e2e2e;
   color: white;
+  font-size: 20px;
+  border-radius: 20px;
   transition: border 0.3s, box-shadow 0.3s;
-  font-family: 'PPTelegraf-Regular', sans-serif;
+  font-family: "PPTelegraf-Regular", sans-serif;
 }
 
-form input:focus, form select:focus, .expense-item.editing input:focus, .expense-item.editing select:focus {
-  border-color: #6699CC;
+form input:focus,
+form select:focus,
+.expense-item.editing input:focus,
+.expense-item.editing select:focus {
+  border-color: #6699cc;
   outline: none;
   box-shadow: 0 0 0 2px rgba(102, 153, 204, 0.5);
 }
 
-.expense-form button .material-icons, .expense-item.editing button .material-icons{
+.expense-form button .material-icons,
+.expense-item.editing button .material-icons {
   margin-right: 5px;
   font-size: 14px;
   font-weight: bold;
 }
 
-
-
-form button, .expense-item.editing button{
-  font-family: 'PPTelegraf-Regular', sans-serif;
+form button,
+.expense-item.editing button {
+  font-family: "PPTelegraf-Regular", sans-serif;
   display: flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 25px 20px;
+  font-size: 20px;
   margin: 10px;
-  background-color: #FFFFFF;
-  color: #2E2E2E;
+  background-color: #ffffff;
+  color: #2e2e2e;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transform: translateY(-2px);
   transition: background-color 0.3s, transform 0.2s;
 }
 
-form button:hover, .expense-item.editing button:hover{
-  background-color: #ccc;
+form button:hover,
+.expense-item.editing button:hover {
+  background-color: #c0ff9e;
 }
 
-form button:active, .expense-item.editing button:active{
+form button:active,
+.expense-item.editing button:active {
   transform: translateY(1px);
 }
 
-h1, h3 {
+h1,
+h3 {
   text-align: center;
   margin-top: 0;
 }
@@ -140,7 +162,7 @@ h1 {
   background-color: #333;
   margin: 20px 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .expense-item {
@@ -149,17 +171,19 @@ h1 {
   align-items: center;
   padding: 15px 10px;
   border-bottom: 1px solid #444;
-  color: #FFF;
+  color: #fff;
+  font-size: 40px;
   transition: transform 0.1s, box-shadow 0.3s;
-  position: relative; 
+  position: relative;
 }
 
 .expense-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.expense-date, .expense-icons {
+.expense-date,
+.expense-icons {
   transition: opacity 0.3s;
 }
 
@@ -167,6 +191,7 @@ h1 {
   flex: 2;
   text-align: center;
   opacity: 1;
+  font-size: 20px;
 }
 
 .expense-item:hover .expense-date {
@@ -184,7 +209,7 @@ h1 {
 .expense-icons span {
   margin: 0 10px;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #cdff8f;
   transition: color 0.3s, transform 0.3s;
 }
 
@@ -206,29 +231,42 @@ h1 {
 
 .expense-desc {
   text-align: left;
+  font-size: 20px;
   margin-left: 10px;
   flex: 3;
 }
 
-.expense-cat{
+.expense-cat {
   flex: 2;
+  font-size: 20px;
 }
 
 .expense-amt {
   flex: 1;
+  font-size: 20px;
 }
 
 .expense-item:last-child {
-  border-bottom: none; 
+  border-bottom: none;
 }
 
 .card {
-  background-color: #FFFFFF;
-  color: #2E2E2E;
+  background-color: #7db876;
+  color: #ffffff;
   padding: 30px;
   margin: 20px 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+}
+.card2 {
+  background-color: #5b8f5a;
+  color: #ffffff;
+  padding: 30px;
+  margin: 20px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
   width: 300px;
   text-align: center;
 }
@@ -236,11 +274,16 @@ h1 {
 .card h3 {
   margin: 0;
   color: #333;
-  font-size: 1.5em;
+  font-size: 2em;
+}
+.card2 h3 {
+  margin: 0;
+  color: #333;
+  font-size: 2em;
 }
 
 .no-expenses-message p {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 20px;
   text-align: center;
   margin-top: 20px;
@@ -248,23 +291,37 @@ h1 {
 }
 
 .card p {
-  font-size: 1.2em;
+  font-size: 3em;
+  font-weight: 500;
   margin: 5px 0 0;
+  color: #ffffff;
+}
+.card2 p {
+  font-size: 3em;
+  font-weight: 500;
+  margin: 5px 0 0;
+  color: #ffffff;
 }
 
 .card-icon {
-  font-size: 40px;
-  color: #555;
+  font-size: 120px;
+
+  color: #c3ffa9;
+}
+
+.card2-icon {
+  font-size: 90px;
+
+  color: #000000;
 }
 
 .card-display {
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 50px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .red-text {
   color: red;
 }
-

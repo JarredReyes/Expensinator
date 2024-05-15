@@ -2,12 +2,55 @@
     transition: margin-left 0.3s;
     margin-left: 280px;
     margin-right: 20px;
+    color: #FFFFFF; /* Adjust text color */
+    font-family: 'PPTelegraf-Regular', sans-serif; /* Set font family */
 }
 
 .collapsed .savings-content {
     margin-left: 100px;
     margin-right: 30px;
 }
+
 .red-text {
     color: red;
-  }
+}
+
+#total-budget-heading {
+    font-size: 20px; /* Adjust font size */
+    text-align: center;
+    margin: 0;
+    color: #000000;
+}
+
+
+/* Existing styles */
+
+.savings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.savings-table th,
+.savings-table td {
+    border: 1px solid #ddd; /* Adjust border color */
+    padding: 12px;
+    text-align: left;
+    color: #ffffff; /* Adjust text color */
+}
+
+.savings-table th {
+    background-color: #a1ce86; /* Adjust header background color */
+}
+
+.savings-table td button {
+    background-color: transparent;
+    border: none;
+    color: #7db876; /* Adjust button color */
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.savings-table td button:hover {
+    text-decoration: underline;
+}

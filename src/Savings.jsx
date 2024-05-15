@@ -1,18 +1,22 @@
+// Import React and necessary hooks
 import React, { useState, useEffect } from 'react';
+// Import your Savings component's CSS file
 import './css/Savings.css';
 
+// Define your Savings component
 const Savings = ({ expanded }) => {
+  // State variables
   const [savingsAmount, setSavingsAmount] = useState('');
   const [totalSavings, setTotalSavings] = useState(() => {
     const savedTotalSavings = localStorage.getItem('totalSavings');
     return savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0;
   });
-
   const [savingsHistory, setSavingsHistory] = useState(() => {
     const savedSavingsHistory = localStorage.getItem('savingsHistory');
     return savedSavingsHistory ? JSON.parse(savedSavingsHistory) : [];
   });
 
+  // useEffect hooks to update local storage
   useEffect(() => {
     localStorage.setItem('totalSavings', totalSavings);
   }, [totalSavings]);
@@ -21,6 +25,7 @@ const Savings = ({ expanded }) => {
     localStorage.setItem('savingsHistory', JSON.stringify(savingsHistory));
   }, [savingsHistory]);
 
+  // Event handlers
   const handleSavingsChange = (event) => {
     const newSavingsAmount = event.target.value;
     setSavingsAmount(newSavingsAmount);
@@ -69,13 +74,14 @@ const Savings = ({ expanded }) => {
     }
   };
 
+  // Return JSX
   return (
     <div className={`savings-content ${expanded ? 'expanded' : 'collapsed'}`}>
       <h1>Welcome to the Budget Page</h1>
       <div className="card-display">
         <div className="card">
-          
-          <h2>Total Budget:<p className={totalSavings < 0 ? 'red-text' : ''}>₱{totalSavings.toLocaleString()}</p></h2>
+          {/* Add id to h2 element */}
+          <h2 id="total-budget-heading">Total Budget:<p className={totalSavings < 0 ? 'red-text' : ''}>₱{totalSavings.toLocaleString()}</p></h2>
         </div>
       </div>
       <p>This page is dedicated to tracking and managing your savings.</p>
@@ -90,17 +96,30 @@ const Savings = ({ expanded }) => {
       <button onClick={handleSaveSavings}>Add Budget</button>
       <button onClick={handleDeleteSavings}>Delete Total Budget</button>
       <h3>Savings History:</h3>
-      <ul>
-        {savingsHistory.map((savings, index) => (
-          <li key={index}>
-            ${savings.amount.toLocaleString()} saved at {new Date(savings.timestamp).toLocaleString()}
-            <button onClick={() => handleEditSavingsHistory(index)}>Edit</button>
-            <button onClick={() => handleDeleteSavingsHistory(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
+      <table className="savings-table">
+        <thead>
+          <tr>
+            <th>Amount Saved</th>
+            <th>Date Saved</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {savingsHistory.map((savings, index) => (
+            <tr key={index}>
+              <td>${savings.amount.toLocaleString()}</td>
+              <td>{new Date(savings.timestamp).toLocaleString()}</td>
+              <td>
+                <button onClick={() => handleEditSavingsHistory(index)}>Edit</button>
+                <button onClick={() => handleDeleteSavingsHistory(index)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
 
+// Export the Savings component
 export default Savings;

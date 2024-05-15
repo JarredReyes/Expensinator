@@ -98,9 +98,9 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card">
                     <span className="material-icons card-icon">payments</span>
                     <h3>Total Expenses</h3>
-                    <p>${calculateTotal()}</p>
+                    <p>₱{calculateTotal()}</p>
                 </div>
-                <div className="card">
+                <div className="card2">
                     <span className="material-icons card-icon">budget</span>
                     <h3>Total Budget</h3>
                     <p className={totalSavings < 0 ? 'red-text' : ''}>₱ {totalSavings.toLocaleString()}</p>
@@ -154,7 +154,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 ) : (
                     <ul className='expenses-list'>
                         {expenses.slice(0, showAll ? expenses.length : 15).map((expense, index) => (
-                            <li key={index} className={`expense-item ${editingIndex === index ? 'editing' : ''}`}>
+                            <li key={index} className={`expense-item ₱{editingIndex === index ? 'editing' : ''}`}>
                                 {editingIndex === index ? (
                                     <>
                                         <input type="text" name="description" value={editedExpense.description} onChange={handleInputChange} />
@@ -170,7 +170,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                                     <>
                                         <span className="expense-desc">{expense.description}</span>
                                         <span className="expense-cat">{expense.category}</span>
-                                        <span className="expense-amt">${expense.amount}</span>
+                                        <span className="expense-amt">₱{expense.amount}</span>
                                         <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                         <div className="expense-icons">
                                             <span className="material-icons" onClick={() => editExpense(index)}>edit</span>

@@ -75,7 +75,7 @@ const Chart = ({ expanded }) => {
             categoryTotals['Utilities'] || 0,
             categoryTotals['Entertainment'] || 0,
             categoryTotals['Other'] || 0,
-          ],
+          ].map(amount => parseFloat(amount.toFixed(2))),
         },
       ],
     }));
@@ -94,7 +94,7 @@ const Chart = ({ expanded }) => {
       datasets: [
         {
           ...prevData.datasets[0],
-          data: monthlyTotals,
+          data: monthlyTotals.map(amount => parseFloat(amount.toFixed(2))),
         },
       ],
     }));
@@ -159,7 +159,7 @@ const Chart = ({ expanded }) => {
             {sortedExpenses.map((expense, index) => (
               <tr key={index}>
                 <td>{expense.category}</td>
-                <td>₱ {expense.amount.toLocaleString()}</td>
+                <td>₱ {expense.amount.toFixed(2)}</td>
               </tr>
             ))}
           </tbody>

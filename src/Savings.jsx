@@ -81,8 +81,11 @@ const Savings = ({ expanded }) => {
       <hr></hr>
       <div className="card-display">
         <div className="card">
+          <span className="material-icons card-icon">wallet</span>
           {/* Add id to h2 element */}
-          <h2 id="total-budget-heading">Total Budget:<p className={totalSavings < 0 ? 'red-text' : ''}>₱{totalSavings.toLocaleString()}</p></h2>
+          <h3 id="total-budget-heading">Total Budget:<p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
+            ₱ {totalSavings.toLocaleString()}
+          </p></h3>
         </div>
       </div>
       <label htmlFor="savings-input" id="budgetlabel">Enter your budget amount: </label>
@@ -106,7 +109,7 @@ const Savings = ({ expanded }) => {
         <tbody>
           {savingsHistory.map((savings, index) => (
             <tr key={index}>
-              <td>${savings.amount.toLocaleString()}</td>
+              <td>₱ {savings.amount.toLocaleString()}</td>
               <td>{new Date(savings.timestamp).toLocaleString()}</td>
               <td>
                 <button onClick={() => handleEditSavingsHistory(index)} id="savingstablebutton">Edit</button>

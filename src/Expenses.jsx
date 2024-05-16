@@ -24,10 +24,12 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
     useEffect(() => {
         localStorage.setItem('expenses', JSON.stringify(expenses));
     }, [expenses]);
+
     useEffect(() => {
         const savedTotalSavings = localStorage.getItem('totalSavings');
         setTotalSavings(savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0);
     }, []);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         if (editingIndex !== -1) {
@@ -105,7 +107,9 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card2">
                     <span className="material-icons card-icon">wallet</span>
                     <h3>Total Budget</h3>
-                    <p className={totalSavings < 0 ? 'red-text' : ''}>₱ {totalSavings.toLocaleString()}</p>
+                    <p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
+                        ₱ {totalSavings.toLocaleString()}
+                    </p>
                 </div>
             </div>
             <form onSubmit={addExpense} className="expense-form">

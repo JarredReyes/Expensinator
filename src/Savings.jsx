@@ -83,7 +83,7 @@ const Savings = ({ expanded }) => {
         <div className="card">
           <span className="material-icons card-icon">wallet</span>
           {/* Add id to h2 element */}
-          <h3 id="total-budget-heading">Total Budget:<p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
+          <h3 id="total-budget-heading">Total Budget:<p style={{ color: totalSavings < 0 ? 'red' : '#fff' }}>
             ₱ {totalSavings.toLocaleString()}
           </p></h3>
         </div>
@@ -97,6 +97,7 @@ const Savings = ({ expanded }) => {
         placeholder="Enter amount"
       />
       <button onClick={handleSaveSavings} id="savingsbutton">Add Budget</button>
+      <button onClick={handleDeleteSavings} id="savingsbutton">Reset</button>
       <h3>Budget History:</h3>
       <br></br>
       <table className="savings-table">

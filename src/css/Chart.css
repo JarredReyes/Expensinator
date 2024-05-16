@@ -5,17 +5,60 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 30px;
 }
 
 .collapsed .chart-content {
-    margin-left: 100px;
-    
+    margin-left: 100px;   
 }
+
+.expenses-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.expenses-table th,
+.expenses-table td {
+    border: 1px solid #ddd; /* Adjust border color */
+    padding: 12px;
+    text-align: left;
+    color: #ffffff; /* Adjust text color */
+}
+
+.expenses-table th {
+    background-color: #a1ce86; /* Adjust header background color */
+}
+
+.expenses-table td button {
+    background-color: transparent;
+    border: none;
+    color: #7db876; /* Adjust button color */
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.expenses-table td button:hover {
+    text-decoration: underline;
+}
+
 
 @media screen and (max-width: 768px) {
     .chart-content {
         margin-left: 0;
     }
+}
+
+select{
+    flex: 1;
+    min-width: 120px;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #2E2E2E;
+    color: #FFFFFF;
+    font-family: 'PPTelegraf-Regular', sans-serif;
 }
 
 .chart-item {

@@ -4,6 +4,8 @@ import { Line, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 
 const Chart = ({ expanded }) => {
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+
   const [pieChartData, setPieChartData] = useState({
     labels: ['Food', 'Transport', 'Utilities', 'Entertainment', 'Other'],
     datasets: [
@@ -37,18 +39,31 @@ const Chart = ({ expanded }) => {
     ],
   });
 
+  const [sortedExpenses, setSortedExpenses] = useState([]);
+  const [expenses, setExpenses] = useState([]);
+
   useEffect(() => {
     const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+    setExpenses(expenses);
 
     // Calculate category totals for pie chart
     const categoryTotals = expenses.reduce((totals, expense) => {
-      if (totals[expense.category]) {
-        totals[expense.category] += parseFloat(expense.amount);
-      } else {
-        totals[expense.category] = parseFloat(expense.amount);
+      const expenseYear = new Date(expense.date).getFullYear();
+      if (expenseYear === selectedYear) {
+        if (totals[expense.category]) {
+          totals[expense.category] += parseFloat(expense.amount);
+        } else {
+          totals[expense.category] = parseFloat(expense.amount);
+        }
       }
       return totals;
     }, {});
+
+    const sortedCategoryTotals = Object.entries(categoryTotals)
+      .map(([category, amount]) => ({ category, amount }))
+      .sort((a, b) => b.amount - a.amount);
+
+    setSortedExpenses(sortedCategoryTotals);
 
     setPieChartData(prevData => ({
       ...prevData,
@@ -68,8 +83,11 @@ const Chart = ({ expanded }) => {
 
     // Calculate monthly totals for line chart
     const monthlyTotals = expenses.reduce((totals, expense) => {
-      const month = new Date(expense.date).getMonth();
-      totals[month] += parseFloat(expense.amount);
+      const expenseYear = new Date(expense.date).getFullYear();
+      if (expenseYear === selectedYear) {
+        const month = new Date(expense.date).getMonth();
+        totals[month] += parseFloat(expense.amount);
+      }
       return totals;
     }, new Array(12).fill(0));
 
@@ -82,7 +100,7 @@ const Chart = ({ expanded }) => {
         },
       ],
     }));
-  }, []);
+  }, [selectedYear]);
 
   const lineChartOptions = {
     responsive: true,
@@ -103,9 +121,20 @@ const Chart = ({ expanded }) => {
     <div className={`chart-content ${expanded ? 'expanded' : 'collapsed'}`}>
       <h1>Chart</h1>
       <hr></hr>
+      <div className='select-year'>
+        <select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+        >
+          {Array.from({ length: 11 }, (_, index) => {
+            const year = new Date().getFullYear() + index;
+            return <option key={year} value={year}>{year}</option>;
+          })}
+        </select>
+      </div>
       <div className="chart-container">
         <div className="chart-item">
-          <h2>Total Expenses per Month</h2>
+          <h2>Total Expenses per Month ({selectedYear})</h2>
           <div>
             <Line data={lineChartData} options={lineChartOptions} />
           </div>
@@ -117,6 +146,27 @@ const Chart = ({ expanded }) => {
           </div>
         </div>
       </div>
+      <h2>Most Expenses By Category</h2>
+      {expenses.length === 0 ? (
+        <p>No expenses yet</p>
+      ) : (
+        <table className="expenses-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedExpenses.map((expense, index) => (
+              <tr key={index}>
+                <td>{expense.category}</td>
+                <td>₱ {expense.amount.toLocaleString()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 };

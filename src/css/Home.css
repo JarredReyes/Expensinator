@@ -2,11 +2,13 @@
   text-align: center;
   padding: 20px;
   font-family: "Roboto", sans-serif; /* Set font family */
-  background-color: #292929;
-  margin-left: 30px;
+  transition: margin-left 0.3s, margin-right 0.3s;
+  margin-left: 250px;
 }
 
-
+.collapsed .home-content {
+  margin-left: 50px;   
+}
 
 .welcome-section {
   display: flex;

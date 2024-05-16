@@ -94,8 +94,7 @@ const Savings = ({ expanded }) => {
         placeholder="Enter amount"
       />
       <button onClick={handleSaveSavings} id="savingsbutton">Add Budget</button>
-      <button onClick={handleDeleteSavings} id="savingsbutton">Delete Total Budget</button>
-      <h3>Savings History:</h3>
+      <h3>Budget History:</h3>
       <table className="savings-table">
         <thead>
           <tr>
@@ -111,7 +110,6 @@ const Savings = ({ expanded }) => {
               <td>{new Date(savings.timestamp).toLocaleString()}</td>
               <td>
                 <button onClick={() => handleEditSavingsHistory(index)} id="savingstablebutton">Edit</button>
-                <button onClick={() => handleDeleteSavingsHistory(index)} id="savingstablebutton">Delete</button>
               </td>
             </tr>
           ))}

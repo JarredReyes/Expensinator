@@ -84,6 +84,8 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         const updatedTotalSavings = totalSavings + parseFloat(oldAmount) - parseFloat(editedExpense.amount);
         setTotalSavings(updatedTotalSavings);
         localStorage.setItem('totalSavings', updatedTotalSavings);
+
+        window.location.reload();
     };
 
     const calculateTotal = () => {
@@ -154,7 +156,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 ) : (
                     <ul className='expenses-list'>
                         {expenses.slice(0, showAll ? expenses.length : 15).map((expense, index) => (
-                            <li key={index} className={`expense-item ₱{editingIndex === index ? 'editing' : ''}`}>
+                            <li key={index} className={`expense-item ${editingIndex === index ? 'editing' : ''}`}>
                                 {editingIndex === index ? (
                                     <>
                                         <input type="text" name="description" value={editedExpense.description} onChange={handleInputChange} />

@@ -4,20 +4,19 @@ import { FaUtensils, FaCar, FaBolt, FaFilm, FaEllipsisH } from 'react-icons/fa';
 import './css/Category.css';
 
 const Category = ({ expenses, expanded }) => {
-    const [selectedCategory, setSelectedCategory] = useState('Food'); 
+    const [selectedCategory, setSelectedCategory] = useState('Food');
 
     const categories = [
-        { name: 'Food', icon: FaUtensils, image:'public/category2.png'  },
-        { name: 'Transport', icon: FaCar, image:'public/category4.png' },
-        { name: 'Utilities', icon: FaBolt, image:'public/category3.png' },
-        { name: 'Entertainment', icon: FaFilm, image:'public/category1.png' },
-        { name: 'Other', icon: FaEllipsisH, image:'src/assets/categories.jpg' }
+        { name: 'Food', icon: FaUtensils, image: 'public/category2.png' },
+        { name: 'Transport', icon: FaCar, image: 'public/category4.png' },
+        { name: 'Utilities', icon: FaBolt, image: 'public/category3.png' },
+        { name: 'Entertainment', icon: FaFilm, image: 'public/category1.png' },
+        { name: 'Other', icon: FaEllipsisH, image: 'src/assets/categories.jpg' }
     ];
 
     return (
         <div className={`category-page ${expanded ? 'expanded' : 'collapsed'}`}>
             <h1>Categories</h1>
-            <p>Listed below is our Expense Tracker App's categories</p>
             <hr />
             <div className="category-grid">
                 {categories.map((category, index) => (
@@ -37,5 +36,5 @@ const Category = ({ expenses, expanded }) => {
 };
 
 export default Category;
-    
+
 

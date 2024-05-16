@@ -101,6 +101,8 @@ const Chart = ({ expanded }) => {
 
   return (
     <div className={`chart-content ${expanded ? 'expanded' : 'collapsed'}`}>
+      <h1>Chart</h1>
+      <hr></hr>
       <div className="chart-container">
         <div className="chart-item">
           <h2>Total Expenses per Month</h2>

@@ -77,14 +77,14 @@ const Savings = ({ expanded }) => {
   // Return JSX
   return (
     <div className={`savings-content ${expanded ? 'expanded' : 'collapsed'}center-align`}>
-      <h1>Welcome to the Budget Page</h1><hr></hr>
+      <h1>Budget</h1>
+      <hr></hr>
       <div className="card-display">
         <div className="card">
           {/* Add id to h2 element */}
           <h2 id="total-budget-heading">Total Budget:<p className={totalSavings < 0 ? 'red-text' : ''}>₱{totalSavings.toLocaleString()}</p></h2>
         </div>
       </div>
-      <p>This page is dedicated to tracking and managing your savings.</p>
       <label htmlFor="savings-input" id="budgetlabel">Enter your budget amount: </label>
       <input
         type="number"

@@ -23,6 +23,7 @@ a {
     flex-direction: column;
     padding-left: 10px;
     padding-bottom: 20px;
+    z-index: 1000;
 }
 
 .sidebar-header {

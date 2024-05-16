@@ -33,6 +33,7 @@ form {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .expense-item.editing {
@@ -67,26 +68,10 @@ form {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-form input,
-form select,
-.expense-item.editing input,
-.expense-item.editing select {
-  flex: 1;
-  min-width: 120px;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background: #2e2e2e;
-  color: #ffffff;
-  font-family: "PPTelegraf-Regular", sans-serif;
-}
 /* eto ung form*/
 form input,
-form select,
-.expense-item.editing input,
-.expense-item.editing select {
-  padding: 30px;
+form select{
+  padding: 25px;
   border: 2px solid #c2ffbd;
   background-color: #2e2e2e;
   color: white;
@@ -97,10 +82,35 @@ form select,
 }
 
 form input:focus,
-form select:focus,
-.expense-item.editing input:focus,
-.expense-item.editing select:focus {
+form select:focus{
   border-color: #6699cc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 153, 204, 0.5);
+}
+
+.expense-item.editing input,.expense-item.editing select {
+  flex: 1;
+  min-width: 120px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: #2E2E2E;
+  color: #FFFFFF;
+  font-family: 'PPTelegraf-Regular', sans-serif;
+}
+
+.expense-item.editing input, .expense-item.editing select {
+  padding: 12px;
+  border: 2px solid #333;
+  background-color: #2E2E2E;
+  color: white;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-family: 'PPTelegraf-Regular', sans-serif;
+}
+
+.expense-item.editing input:focus, .expense-item.editing select:focus {
+  border-color: #6699CC;
   outline: none;
   box-shadow: 0 0 0 2px rgba(102, 153, 204, 0.5);
 }
@@ -112,8 +122,26 @@ form select:focus,
   font-weight: bold;
 }
 
-form button,
-.expense-item.editing button {
+.expense-item.editing button{
+  font-family: 'PPTelegraf-Regular', sans-serif;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #FFFFFF;
+  color: #2E2E2E;
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+form button{
   font-family: "PPTelegraf-Regular", sans-serif;
   display: flex;
   align-items: center;
@@ -324,6 +352,7 @@ h1 {
   width: 100%;
   margin-bottom: 10px;
 }
+
 .red-text {
   color: red;
 }

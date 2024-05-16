@@ -4,7 +4,7 @@ import { Line, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 
 const Chart = ({ expanded }) => {
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear()); // Default to current year
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
   const [pieChartData, setPieChartData] = useState({
     labels: ['Food', 'Transport', 'Utilities', 'Entertainment', 'Other'],
@@ -46,7 +46,6 @@ const Chart = ({ expanded }) => {
     const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
     setExpenses(expenses);
 
-    // Calculate category totals for pie chart
     const categoryTotals = expenses.reduce((totals, expense) => {
       const expenseYear = new Date(expense.date).getFullYear();
       if (expenseYear === selectedYear) {
@@ -81,7 +80,6 @@ const Chart = ({ expanded }) => {
       ],
     }));
 
-    // Calculate monthly totals for line chart
     const monthlyTotals = expenses.reduce((totals, expense) => {
       const expenseYear = new Date(expense.date).getFullYear();
       if (expenseYear === selectedYear) {

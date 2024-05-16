@@ -17,7 +17,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
     });
     const [totalSavings, setTotalSavings] = useState(() => {
         const savedTotalSavings = localStorage.getItem('totalSavings');
-        return savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0;
+        return savedTotalSavings ? parseFloat(savedTotalSavings).toFixed(2) : '0.00';
     });
     const categories = ['Food', 'Transport', 'Utilities', 'Entertainment', 'Other'];
 
@@ -27,7 +27,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
 
     useEffect(() => {
         const savedTotalSavings = localStorage.getItem('totalSavings');
-        setTotalSavings(savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0);
+        setTotalSavings(savedTotalSavings ? parseFloat(savedTotalSavings).toFixed(2) : '0.00');
     }, []);
 
     const handleInputChange = (e) => {
@@ -49,8 +49,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         setExpenses([...expenses, newExpense]);
         setForm({ ...form, description: '', amount: '' });
 
-        // Update total savings
-        const updatedTotalSavings = totalSavings - parseFloat(newExpense.amount);
+        const updatedTotalSavings = (parseFloat(totalSavings) - parseFloat(newExpense.amount)).toFixed(2);
         setTotalSavings(updatedTotalSavings);
         localStorage.setItem('totalSavings', updatedTotalSavings);
 
@@ -63,8 +62,8 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
         setExpenses(updatedExpenses);
         deleteAndSyncExpense(index);
 
-        // Restore the deleted expense amount to total savings
-        const updatedTotalSavings = totalSavings + parseFloat(deletedExpense.amount);
+
+        const updatedTotalSavings = (parseFloat(totalSavings) + parseFloat(deletedExpense.amount)).toFixed(2);
         setTotalSavings(updatedTotalSavings);
         localStorage.setItem('totalSavings', updatedTotalSavings);
     };
@@ -76,14 +75,14 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
 
     const saveEditedExpense = () => {
         const updatedExpenses = [...expenses];
-        const oldAmount = updatedExpenses[editingIndex].amount;
-        updatedExpenses[editingIndex] = editedExpense;
+        const oldAmount = parseFloat(updatedExpenses[editingIndex].amount);
+        updatedExpenses[editingIndex] = { ...editedExpense, amount: parseFloat(editedExpense.amount).toFixed(2) };
         setExpenses(updatedExpenses);
         setEditingIndex(-1);
         setEditedExpense(null);
 
-        // Update total savings with the edited amount
-        const updatedTotalSavings = totalSavings + parseFloat(oldAmount) - parseFloat(editedExpense.amount);
+
+        const updatedTotalSavings = (parseFloat(totalSavings) + oldAmount - parseFloat(editedExpense.amount)).toFixed(2);
         setTotalSavings(updatedTotalSavings);
         localStorage.setItem('totalSavings', updatedTotalSavings);
 
@@ -102,13 +101,13 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card">
                     <span className="material-icons card-icon">payments</span>
                     <h3>Total Expenses</h3>
-                    <p>₱{parseFloat(calculateTotal()).toLocaleString()}</p>
+                    <p>₱{parseFloat(calculateTotal()).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
                 </div>
                 <div className="card2">
                     <span className="material-icons card-icon">wallet</span>
                     <h3>Total Budget</h3>
                     <p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
-                        ₱{totalSavings.toLocaleString()}
+                        ₱{parseFloat(totalSavings).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                     </p>
                 </div>
             </div>
@@ -176,7 +175,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                                     <>
                                         <span className="expense-desc">{expense.description}</span>
                                         <span className="expense-cat">{expense.category}</span>
-                                        <span className="expense-amt">₱{parseFloat(expense.amount).toLocaleString()}</span>
+                                        <span className="expense-amt">₱ {parseFloat(expense.amount).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                                         <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                         <div className="expense-icons">
                                             <span className="material-icons" onClick={() => editExpense(index)}>edit</span>

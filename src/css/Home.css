@@ -1,7 +1,7 @@
 .home-content {
   text-align: center;
   padding: 20px;
-  font-family: "Roboto", sans-serif; /* Set font family */
+  font-family: "Roboto", sans-serif;
   transition: margin-left 0.3s, margin-right 0.3s;
   margin-left: 250px;
 }
@@ -20,9 +20,9 @@
 .welcome-image {
   width: calc(100% - 20px);
   max-width: 5000px;
-  height: auto; /* Maintain aspect ratio */
+  height: auto;
   max-height: 500px;
-  object-fit: cover; /* Ensure the image covers the container */
+  object-fit: cover;
   margin-bottom: 20px;
   margin-left: 20px;
 }
@@ -31,7 +31,7 @@
   font-size: 4em;
   font-weight: 700;
   margin: 0;
-  font-family: "Arial", sans-serif; /* Set font family */
+  font-family: "Arial", sans-serif;
   color: #7db876;
 }
 
@@ -39,13 +39,13 @@ p {
   font-size: 1.5em;
   margin: 20px 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Set font family */
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .button-container {
   display: flex;
-  flex-direction: row; /* Arrange buttons horizontally */
-  flex-wrap: wrap; /*added*/
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 40px;
   justify-content: center;
   margin-top: 20px;
@@ -56,23 +56,23 @@ p {
   display: flex;
   align-items: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; /* Set font family */
-  justify-content: center; /* Center button content horizontally and vertically */
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  justify-content: center;
   background-color: #7db876;
   color: rgb(0, 0, 0);
-  padding: 20px 40px; /* Adjust padding to make buttons larger */
-  font-size: 20px; /* Increase font size */
+  padding: 20px 40px;
+  font-size: 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-  flex: 1 1 150px; /* Ensure buttons have a minimum width and can grow */
+  flex: 1 1 150px;
   min-height: 60px;
 }
 
 .home-button .icon {
-  font-size: 2.5em; /* Increase icon size */
-  margin-right: 40px; /* Add space between icon and text */
+  font-size: 2.5em;
+  margin-right: 40px;
 }
 
 .home-button:hover .icon {
@@ -86,14 +86,12 @@ p {
   transform: scale(1.05);
 }
 
-
-
 @media (max-width: 768px) {
   .welcome-image {
-    width: calc(100% - 20px); /* Adjust for smaller screens */
+    width: calc(100% - 20px);
     max-height: 300px;
-    margin-left: 10px; /* Smaller margin on the left */
-    margin-right: 10px; /* Smaller margin on the right */
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .home h2 {
@@ -115,16 +113,16 @@ p {
   }
 
   .button-container {
-    margin-left: 20px; /* Adjust left margin for smaller screens */
+    margin-left: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .welcome-image {
-    width: calc(100% - 10px); /* Further adjust for very small screens */
+    width: calc(100% - 10px);
     max-height: 250px;
-    margin-left: 5px; /* Smaller margin on the left */
-    margin-right: 5px; /* Smaller margin on the right */
+    margin-left: 5px;
+    margin-right: 5px;
   }
 
   .home h2 {
@@ -146,14 +144,12 @@ p {
   }
 
   .button-container {
-    margin-left: 10px; /* Further adjust left margin for very small screens */
+    margin-left: 10px;
   }
 }
 
-
-button{
+button {
   font-family: "PPTelegraf-Regular", sans-serif;
-
   align-items: center;
   padding: 5px 5px;
   font-size: 20px;
@@ -169,6 +165,6 @@ button{
   transition: background-color 0.3s, transform 0.2s;
 }
 
-button:hover{
+button:hover {
   background-color: #c0ff9e;
 }

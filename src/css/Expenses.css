@@ -15,17 +15,19 @@ h2 {
   font-weight: 300;
   margin: 0;
   margin-left: 10px;
-  font-family: "Arial", sans-serif; /* Set font family */
+  font-family: "Arial", sans-serif; 
   color: #7db876;
 }
 
 .expenses-content {
   transition: margin-left 0.3s;
   margin-left: 280px;
+  margin-right: 30px;
 }
 
 .collapsed .expenses-content {
   margin-left: 100px;
+  margin-right: 30px;
 }
 
 form {
@@ -68,7 +70,6 @@ form {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
 }
 
-/* eto ung form*/
 form input,
 form select{
   padding: 25px;
@@ -291,7 +292,7 @@ h1 {
   text-align: center;
 }
 .card2 {
-  background-color: #5b8f5a;
+  background-color: #7db876;
   color: #ffffff;
   padding: 30px;
   margin: 20px 15px;
@@ -357,6 +358,24 @@ h1 {
   color: red;
 }
 
+#backbutton {
+  font-family: "PPTelegraf-Regular", sans-serif;
+  align-items: center;
+  padding: 10px 10px;
+  font-size: 15px;
+  margin: 10px;
+  background-color: #ffffff;
+  color: #2e2e2e;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: background-color 0.3s, transform 0.2s;
+  min-width: 100px;
+}
 
 
 @media only screen and (max-width: 768px) {

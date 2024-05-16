@@ -1,38 +1,32 @@
-// Import React and necessary hooks
 import React, { useState, useEffect } from 'react';
-// Import your Savings component's CSS file
 import './css/Savings.css';
 
-// Define your Savings component
 const Savings = ({ expanded }) => {
-  // State variables
   const [savingsAmount, setSavingsAmount] = useState('');
   const [totalSavings, setTotalSavings] = useState(() => {
     const savedTotalSavings = localStorage.getItem('totalSavings');
-    return savedTotalSavings ? parseInt(savedTotalSavings, 10) : 0;
+    return savedTotalSavings ? parseFloat(savedTotalSavings) : 0.00;
   });
   const [savingsHistory, setSavingsHistory] = useState(() => {
     const savedSavingsHistory = localStorage.getItem('savingsHistory');
     return savedSavingsHistory ? JSON.parse(savedSavingsHistory) : [];
   });
 
-  // useEffect hooks to update local storage
   useEffect(() => {
-    localStorage.setItem('totalSavings', totalSavings);
+    localStorage.setItem('totalSavings', totalSavings.toFixed(2));
   }, [totalSavings]);
 
   useEffect(() => {
     localStorage.setItem('savingsHistory', JSON.stringify(savingsHistory));
   }, [savingsHistory]);
 
-  // Event handlers
   const handleSavingsChange = (event) => {
     const newSavingsAmount = event.target.value;
     setSavingsAmount(newSavingsAmount);
   };
 
   const handleSaveSavings = () => {
-    const amountToAdd = parseInt(savingsAmount, 10);
+    const amountToAdd = parseFloat(savingsAmount);
     if (!isNaN(amountToAdd) && amountToAdd > 0) {
       const newTotalSavings = totalSavings + amountToAdd;
       setTotalSavings(newTotalSavings);
@@ -44,7 +38,7 @@ const Savings = ({ expanded }) => {
   };
 
   const handleDeleteSavings = () => {
-    setTotalSavings(0);
+    setTotalSavings(0.00);
     setSavingsHistory([]);
     localStorage.removeItem('totalSavings');
     localStorage.removeItem('savingsHistory');
@@ -62,7 +56,7 @@ const Savings = ({ expanded }) => {
     const newSavingsHistory = [...savingsHistory];
     const editedSavings = prompt("Enter the new savings amount:");
     if (editedSavings !== null && editedSavings !== "") {
-      const newAmount = parseInt(editedSavings, 10);
+      const newAmount = parseFloat(editedSavings);
       if (!isNaN(newAmount)) {
         const oldAmount = newSavingsHistory[index].amount;
         newSavingsHistory[index].amount = newAmount;
@@ -74,18 +68,17 @@ const Savings = ({ expanded }) => {
     }
   };
 
-  // Return JSX
   return (
-    <div className={`savings-content ${expanded ? 'expanded' : 'collapsed'}center-align`}>
+    <div className={`savings-content ${expanded ? 'expanded' : 'collapsed'} center-align`}>
       <h1>Budget</h1>
-      <hr></hr>
+      <hr />
       <div className="card-display">
         <div className="card">
           <span className="material-icons card-icon">wallet</span>
-          {/* Add id to h2 element */}
-          <h3 id="total-budget-heading">Total Budget:<p style={{ color: totalSavings < 0 ? 'red' : '#fff' }}>
-            ₱ {totalSavings.toLocaleString()}
-          </p></h3>
+          <h3>Total Budget</h3>
+          <p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
+            ₱{parseFloat(totalSavings).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+          </p>
         </div>
       </div>
       <label htmlFor="savings-input" id="budgetlabel">Enter your budget amount: </label>
@@ -95,11 +88,12 @@ const Savings = ({ expanded }) => {
         value={savingsAmount}
         onChange={handleSavingsChange}
         placeholder="Enter amount"
+        step="0.01"
       />
       <button onClick={handleSaveSavings} id="savingsbutton">Add Budget</button>
       <button onClick={handleDeleteSavings} id="savingsbutton">Reset</button>
       <h3>Budget History:</h3>
-      <br></br>
+      <br />
       <table className="savings-table">
         <thead>
           <tr>
@@ -111,7 +105,7 @@ const Savings = ({ expanded }) => {
         <tbody>
           {savingsHistory.map((savings, index) => (
             <tr key={index}>
-              <td>₱ {savings.amount.toLocaleString()}</td>
+              <td>₱ {savings.amount.toFixed(2).toLocaleString()}</td>
               <td>{new Date(savings.timestamp).toLocaleString()}</td>
               <td>
                 <button onClick={() => handleEditSavingsHistory(index)} id="savingstablebutton">Edit</button>
@@ -124,5 +118,4 @@ const Savings = ({ expanded }) => {
   );
 };
 
-// Export the Savings component
 export default Savings;

@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './css/Home.css';
 import { FaHome, FaChartBar, FaDollarSign, FaAngleLeft, FaAngleRight, FaFilter, FaWallet, FaMoneyBillWave } from 'react-icons/fa';
 
 const Home = ({ expanded }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [`/slide1.png`, `/slide2.png`, `/slide3.png`];
-  const intervalDuration = 4000; // 4 seconds
-  let intervalId; // Interval ID
+  const intervalDuration = 4000;
+  const intervalRef = useRef(null);
 
   const goToPreviousImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
@@ -19,13 +19,13 @@ const Home = ({ expanded }) => {
   };
 
   const resetInterval = () => {
-    clearInterval(intervalId);
-    intervalId = setInterval(goToNextImage, intervalDuration);
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(goToNextImage, intervalDuration);
   };
 
   useEffect(() => {
-    intervalId = setInterval(goToNextImage, intervalDuration);
-    return () => clearInterval(intervalId);
+    intervalRef.current = setInterval(goToNextImage, intervalDuration);
+    return () => clearInterval(intervalRef.current);
   }, []);
 
   return (

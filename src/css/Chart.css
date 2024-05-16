@@ -20,20 +20,20 @@
 
 .expenses-table th,
 .expenses-table td {
-    border: 1px solid #ddd; /* Adjust border color */
+    border: 1px solid #ddd; 
     padding: 12px;
     text-align: left;
-    color: #ffffff; /* Adjust text color */
+    color: #ffffff; 
 }
 
 .expenses-table th {
-    background-color: #a1ce86; /* Adjust header background color */
+    background-color: #a1ce86; 
 }
 
 .expenses-table td button {
     background-color: transparent;
     border: none;
-    color: #7db876; /* Adjust button color */
+    color: #7db876; 
     cursor: pointer;
     margin-right: 5px;
 }
@@ -62,7 +62,7 @@ select{
 }
 
 .chart-item {
-    width: 90%; /* Adjust as needed */
+    width: 90%; 
     max-width: 600px;
     margin: 20px auto;
 }

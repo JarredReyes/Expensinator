@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'PPTelegraf-Regular';
-    src: url('../fonts/PPTelegraf-Regular.otf') format('opentype'); /* OpenType Format */
+    src: url('../fonts/PPTelegraf-Regular.otf') format('opentype'); 
     font-weight: normal;
     font-style: normal;
 }
@@ -30,9 +30,9 @@ a {
     padding: 10px 30px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align items to the left */
+    justify-content: flex-start; 
     font-size: 20px;
-    margin-right: auto; /* Pushes the logo to the left */
+    margin-right: auto; 
 }
 
 
@@ -42,10 +42,10 @@ a {
     font-weight: bold;
 }
 .header-logo {
-    width: 50px; /* Adjust the width of the logo */
-    height: auto; /* Allow the height to adjust proportionally */
-    margin-right: 10px; /* Add margin to separate the logo from text */
-    margin-left: -30px; /* Adjust the margin to move the logo further to the left */
+    width: 50px; 
+    height: auto; 
+    margin-right: 10px;
+    margin-left: -30px; 
     
 }
 

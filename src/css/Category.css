@@ -6,7 +6,7 @@
 
 .collapsed .category-page {
     margin-left: 100px;
-    margin-right: 100px; /* Adjust right margin to match the collapsed navbar width */
+    margin-right: 30px;
 }
 
 .category-page h2, .category-page h3 {
@@ -84,8 +84,6 @@
     text-align: center;
 }
 
-
-/* Responsive styles */
 @media (max-width: 1200px) {
     .category-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -93,12 +91,12 @@
 
     .category-page {
         margin-left: 80px;
-        margin-right: 5px; /* Adjust right margin */
+        margin-right: 5px; 
     }
 
     .collapsed .category-page {
         margin-left: 80px;
-        margin-right: 0px; /* Adjust right margin */
+        margin-right: 0px; 
     }
 }
 
@@ -109,12 +107,12 @@
 
     .category-page {
         margin-left: 80px;
-        margin-right: 5px; /* Adjust right margin */
+        margin-right: 5px; 
     }
 
     .collapsed .category-page {
         margin-left: 80px;
-        margin-right: 0px; /* Adjust right margin */
+        margin-right: 0px;
     }
 }
 
@@ -126,12 +124,12 @@
 
     .category-page {
         margin-left: 80px;
-        margin-right: 5px; /* Adjust right margin */
+        margin-right: 5px; 
     }
 
     .collapsed .category-page {
         margin-left: 80px;
-        margin-right: 0px; /* Adjust right margin */
+        margin-right: 0px;
     }
 }
 
@@ -143,11 +141,11 @@
 
     .category-page {
         margin-left: 80px;
-        margin-right: 5px; /* Adjust right margin */
+        margin-right: 5px; 
     }
 
     .collapsed .category-page {
         margin-left: 80px;
-        margin-right: 0px; /* Adjust right margin */
+        margin-right: 0px; 
     }
 }

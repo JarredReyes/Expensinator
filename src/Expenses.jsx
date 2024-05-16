@@ -101,7 +101,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                     <p>₱{calculateTotal()}</p>
                 </div>
                 <div className="card2">
-                    <span className="material-icons card-icon">budget</span>
+                    <span className="material-icons card-icon">wallet</span>
                     <h3>Total Budget</h3>
                     <p className={totalSavings < 0 ? 'red-text' : ''}>₱ {totalSavings.toLocaleString()}</p>
                 </div>

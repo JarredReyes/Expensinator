@@ -14,6 +14,7 @@ h2 {
   font-size: 2em;
   font-weight: 300;
   margin: 0;
+  margin-left: 10px;
   font-family: "Arial", sans-serif; /* Set font family */
   color: #7db876;
 }
@@ -80,7 +81,7 @@ form select,
   color: #ffffff;
   font-family: "PPTelegraf-Regular", sans-serif;
 }
-
+/* eto ung form*/
 form input,
 form select,
 .expense-item.editing input,
@@ -163,6 +164,7 @@ h1 {
   margin: 20px 0;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin-left: 10px;
 }
 
 .expense-item {
@@ -324,4 +326,65 @@ h1 {
 }
 .red-text {
   color: red;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+  .expenses-content {
+    margin-left: 10;
+    margin-right: 10px;
+  }
+  .collapsed .expenses-content {
+    margin-left: 60px;
+  }
+
+
+  
+}
+
+@media only screen and (max-width: 600px) {
+  form input,
+  form select,
+  .expense-item.editing input,
+  .expense-item.editing select {
+    font-size: 16px;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .expense-form button,
+  .expense-item.editing button {
+    font-size: 16px;
+    padding: 20px;
+    border-radius: 15px;
+  }
+  .card-display {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .card,
+  .card2 {
+    width: calc(90% - 25px);
+    
+  }
+  .card p,
+  .card2 p {
+    font-size: 2em;
+  }
+  
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  .card-icon {
+    font-size: 80px;
+  }
+  .card2-icon {
+    font-size: 60px;
+  }
 }

@@ -54,3 +54,119 @@
 .savings-table td button:hover {
     text-decoration: underline;
 }
+
+#savingsbutton{
+    font-family: "PPTelegraf-Regular", sans-serif;
+ 
+    align-items: center;
+    padding: 15px 15px;
+    font-size: 20px;
+    margin: 10px;
+    background-color: #ffffff;
+    color: #2e2e2e;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: background-color 0.3s, transform 0.2s;
+    min-width: 265px;
+}
+
+#savingsbutton:hover{
+    background-color: #c0ff9e;
+}
+
+#savings-input{
+  padding: 15px;
+  border: 2px solid #c2ffbd;
+  background-color: #2e2e2e;
+  color: white;
+  font-size: 20px;
+  border-radius: 20px;
+  transition: border 0.3s, box-shadow 0.3s;
+  font-family: "PPTelegraf-Regular", sans-serif;
+  min-width: 265px;
+  margin: 10px;
+}
+
+#savings-input{
+  border-color: #6699cc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(102, 153, 204, 0.5);
+}
+
+label{
+    font-size: 1.5em;
+    font-weight: 300;
+    margin: 0;
+    margin-left: 10px;
+    font-family: "Arial", sans-serif; /* Set font family */
+    color: #7db876;
+}
+
+#savingstablebutton{
+    font-family: "PPTelegraf-Regular", sans-serif;
+
+    align-items: center;
+    padding: 10px 10px;
+    font-size: 20px;
+    margin: 10px;
+    background-color: #ffffff;
+    color: #2e2e2e;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transform: translateY(-2px);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#savingstablebutton:hover{
+    background-color: #c0ff9e;
+}
+
+
+/* Define breakpoints for responsiveness */
+@media only screen and (max-width: 768px) {
+    .savings-content {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .savings-content {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  
+    #total-budget-heading {
+      font-size: 16px; /* Adjust font size for smaller screens */
+    }
+  }
+  
+  /* Adjustments for smaller screens */
+  @media only screen and (max-width: 320px) {
+    #total-budget-heading {
+      font-size: 14px; /* Further reduce font size for very small screens */
+    }
+  
+    label {
+      font-size: 1.2em; /* Reduce label font size */
+    }
+  
+    #savings-input {
+      padding: 15px; /* Reduce padding for input */
+      font-size: 16px; /* Reduce font size for input */
+    }
+  
+    .savings-table td button {
+      padding: 8px; /* Reduce button padding */
+      font-size: 16px; /* Reduce button font size */
+    }
+  }
+  

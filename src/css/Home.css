@@ -3,23 +3,26 @@
   padding: 20px;
   font-family: "Roboto", sans-serif; /* Set font family */
   background-color: #292929;
+  margin-left: 30px;
 }
+
+
 
 .welcome-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
   padding: 20px;
 }
 
 .welcome-image {
-  width: 100%;
+  width: calc(100% - 20px);
   max-width: 5000px;
   height: auto; /* Maintain aspect ratio */
   max-height: 500px;
   object-fit: cover; /* Ensure the image covers the container */
   margin-bottom: 20px;
-  margin-left: 60px;
+  margin-left: 20px;
 }
 
 .home h2 {
@@ -40,10 +43,11 @@ p {
 .button-container {
   display: flex;
   flex-direction: row; /* Arrange buttons horizontally */
+  flex-wrap: wrap; /*added*/
   gap: 40px;
-
+  justify-content: center;
   margin-top: 20px;
-  margin-left: 70px;
+  margin-left: 0px;
 }
 
 .home-button {
@@ -60,6 +64,8 @@ p {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  flex: 1 1 150px; /* Ensure buttons have a minimum width and can grow */
+  min-height: 60px;
 }
 
 .home-button .icon {
@@ -76,4 +82,91 @@ p {
   background-color: #ffffff;
   color: #7db876;
   transform: scale(1.05);
+}
+
+
+
+@media (max-width: 768px) {
+  .welcome-image {
+    width: calc(100% - 20px); /* Adjust for smaller screens */
+    max-height: 300px;
+    margin-left: 10px; /* Smaller margin on the left */
+    margin-right: 10px; /* Smaller margin on the right */
+  }
+
+  .home h2 {
+    font-size: 2.5em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+
+  .home-button {
+    font-size: 0.9em;
+    padding: 10px 20px;
+  }
+
+  .home-button .icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+  }
+
+  .button-container {
+    margin-left: 20px; /* Adjust left margin for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-image {
+    width: calc(100% - 10px); /* Further adjust for very small screens */
+    max-height: 250px;
+    margin-left: 5px; /* Smaller margin on the left */
+    margin-right: 5px; /* Smaller margin on the right */
+  }
+
+  .home h2 {
+    font-size: 2em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .home-button {
+    font-size: 0.8em;
+    padding: 8px 16px;
+  }
+
+  .home-button .icon {
+    font-size: 1em;
+    margin-right: 5px;
+  }
+
+  .button-container {
+    margin-left: 10px; /* Further adjust left margin for very small screens */
+  }
+}
+
+
+button{
+  font-family: "PPTelegraf-Regular", sans-serif;
+
+  align-items: center;
+  padding: 5px 5px;
+  font-size: 20px;
+  margin: 5px;
+  background-color: #ffffff;
+  color: #2e2e2e;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover{
+  background-color: #c0ff9e;
 }

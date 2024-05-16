@@ -4,33 +4,29 @@ import { FaHome, FaChartBar, FaDollarSign, FaAngleLeft, FaAngleRight, FaFilter, 
 
 const Home = ({ expanded }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const images = [`public/slide1.png`, `public/slide2.png`, `public/slide3.png`];
-  const intervalDuration = 4000; // 3 seconds
+  const images = [`/slide1.png`, `/slide2.png`, `/slide3.png`];
+  const intervalDuration = 4000; // 4 seconds
   let intervalId; // Interval ID
 
-  // Function to go to the previous image
   const goToPreviousImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
     resetInterval();
   };
 
-  // Function to go to the next image
   const goToNextImage = () => {
     setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
     resetInterval();
   };
 
-  // Function to reset the interval timer
   const resetInterval = () => {
-    clearInterval(intervalId); // Clear the previous interval
-    intervalId = setInterval(goToNextImage, intervalDuration); // Start a new interval
+    clearInterval(intervalId);
+    intervalId = setInterval(goToNextImage, intervalDuration);
   };
 
-  // Effect to start the slideshow interval when the component mounts
   useEffect(() => {
-    intervalId = setInterval(goToNextImage, intervalDuration); // Start the interval
-    return () => clearInterval(intervalId); // Cleanup: clear interval when component unmounts
-  }, []); // Only run once on component mount
+    intervalId = setInterval(goToNextImage, intervalDuration);
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className={`home-content ${expanded ? 'expanded' : 'collapsed'}`}>

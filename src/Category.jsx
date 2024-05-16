@@ -7,11 +7,11 @@ const Category = ({ expenses, expanded }) => {
     const [selectedCategory, setSelectedCategory] = useState('Food'); 
 
     const categories = [
-        { name: 'Food', icon: FaUtensils, image:'public/category1.png'  },
-        { name: 'Transport', icon: FaCar, image:'public/category2.png' },
+        { name: 'Food', icon: FaUtensils, image:'public/category2.png'  },
+        { name: 'Transport', icon: FaCar, image:'public/category4.png' },
         { name: 'Utilities', icon: FaBolt, image:'public/category3.png' },
-        { name: 'Entertainment', icon: FaFilm, image:'public/category4.png' },
-        { name: 'Other', icon: FaEllipsisH, image:'public/category5.png' }
+        { name: 'Entertainment', icon: FaFilm, image:'public/category1.png' },
+        { name: 'Other', icon: FaEllipsisH, image:'src/assets/categories.jpg' }
     ];
 
     return (

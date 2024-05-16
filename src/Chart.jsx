@@ -104,13 +104,13 @@ const Chart = ({ expanded }) => {
       <div className="chart-container">
         <div className="chart-item">
           <h2>Total Expenses per Month</h2>
-          <div style={{ height: '400px', width: '600px' }}>
+          <div>
             <Line data={lineChartData} options={lineChartOptions} />
           </div>
         </div>
         <div className="chart-item">
           <h2>Expenses by Category</h2>
-          <div style={{ height: '400px', width: '600px' }}>
+          <div>
             <Pie data={pieChartData} options={pieChartOptions} />
           </div>
         </div>

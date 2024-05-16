@@ -102,13 +102,13 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                 <div className="card">
                     <span className="material-icons card-icon">payments</span>
                     <h3>Total Expenses</h3>
-                    <p>₱{calculateTotal()}</p>
+                    <p>₱{parseFloat(calculateTotal()).toLocaleString()}</p>
                 </div>
                 <div className="card2">
                     <span className="material-icons card-icon">wallet</span>
                     <h3>Total Budget</h3>
                     <p style={{ color: totalSavings < 0 ? 'red' : 'inherit' }}>
-                        ₱ {totalSavings.toLocaleString()}
+                        ₱{totalSavings.toLocaleString()}
                     </p>
                 </div>
             </div>
@@ -176,7 +176,7 @@ const Expenses = ({ expanded, deleteAndSyncExpense }) => {
                                     <>
                                         <span className="expense-desc">{expense.description}</span>
                                         <span className="expense-cat">{expense.category}</span>
-                                        <span className="expense-amt">₱{expense.amount}</span>
+                                        <span className="expense-amt">₱{parseFloat(expense.amount).toLocaleString()}</span>
                                         <span className="expense-date">{format(parseISO(expense.date), 'MMMM dd, yyyy')}</span>
                                         <div className="expense-icons">
                                             <span className="material-icons" onClick={() => editExpense(index)}>edit</span>

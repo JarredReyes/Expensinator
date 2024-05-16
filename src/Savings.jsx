@@ -98,6 +98,7 @@ const Savings = ({ expanded }) => {
       />
       <button onClick={handleSaveSavings} id="savingsbutton">Add Budget</button>
       <h3>Budget History:</h3>
+      <br></br>
       <table className="savings-table">
         <thead>
           <tr>
